@@ -1,4 +1,8 @@
 def clear_sky_radiation ( G_on, sun_zen, a_0, a_1, k ):
+    import numpy as np
+    import warnings
+    #suppress warnings
+    warnings.filterwarnings('ignore')
     '''
     Descripción
 
@@ -15,7 +19,7 @@ def clear_sky_radiation ( G_on, sun_zen, a_0, a_1, k ):
     '''
     from math import exp, cos
     # atmospheric transmittance for beam radiation
-    tau_b = a_0 + a_1 * exp( - k / cos( sun_zen ) )
+    tau_b = a_0 + a_1 * np.exp( - k / cos( sun_zen ) )
     # print('tau_b =',tau_b)
     # clear-sky horizontal beam radiation 
     G_cnb = G_on * tau_b 
